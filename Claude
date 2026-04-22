@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elizabeth Villa Montes | Project Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #E8E4DF;
+      --warm-white: #F0EDE9;
+      --clay: #8B1A35;
+      --clay-light: #B5627A;
+      --clay-dark: #6B0F25;
+      --charcoal: #1C1C1C;
+      --mid: #7A6A63;
+      --light-line: #D8D2CB;
+      --tag-bg: #E4DDD6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--light-line);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--clay); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--clay);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--clay);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 540px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--mid);
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 3rem 4rem;
+    }
+
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--clay-light);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.55);
+      margin-top: 0.4rem;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clay);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--light-line);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    /* FEATURED PROJECT */
+    .featured-project {
+      background: var(--warm-white);
+      border: 1px solid var(--light-line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.3s;
+    }
+
+    .featured-project:hover {
+      box-shadow: 0 8px 40px rgba(44,40,37,0.08);
+    }
+
+    .project-header {
+      padding: 2.5rem 2.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .project-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 400;
+      color: var(--light-line);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .project-meta {
+      flex: 1;
+    }
+
+    .project-type {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-org {
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+
+    .project-body {
+      padding: 1.5rem 2.5rem 2.5rem;
+    }
+
+    .project-overview {
+      color: var(--mid);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      border-left: 2px solid var(--clay-light);
+      padding-left: 1.25rem;
+    }
+
+    /* PHASES */
+    .phases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .phase {
+      background: var(--tag-bg);
+      border-radius: 4px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .phase-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--clay-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .phase-text {
+      font-size: 0.82rem;
+      color: var(--charcoal);
+      line-height: 1.5;
+    }
+
+    /* RESULTS */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-card {
+      background: var(--charcoal);
+      color: var(--cream);
+      border-radius: 4px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .result-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--clay-light);
+      line-height: 1;
+    }
+
+    .result-desc {
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: rgba(250,247,242,0.6);
+      margin-top: 0.35rem;
+      line-height: 1.4;
+    }
+
+    .project-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* ADDITIONAL PROJECTS */
+    .additional-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .mini-project {
+      background: var(--warm-white);
+      border: 1px solid var(--light-line);
+      border-radius: 4px;
+      padding: 1.75rem;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .mini-project:hover {
+      box-shadow: 0 6px 30px rgba(44,40,37,0.07);
+      transform: translateY(-2px);
+    }
+
+    .mini-type {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 0.6rem;
+    }
+
+    .mini-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .mini-date {
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-bottom: 0.85rem;
+    }
+
+    .mini-desc {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 1.1rem;
+    }
+
+    .mini-result {
+      font-size: 0.8rem;
+      color: var(--clay-dark);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .mini-result::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: var(--clay);
+    }
+
+    /* SKILLS */
+    .skills-section {
+      background: var(--warm-white);
+      border-top: 1px solid var(--light-line);
+      padding: 5rem 4rem;
+    }
+
+    .skills-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .skill-group h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 0.85rem;
+    }
+
+    .skill-group ul {
+      list-style: none;
+    }
+
+    .skill-group li {
+      font-size: 0.87rem;
+      color: var(--mid);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--light-line);
+      line-height: 1.4;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--charcoal);
+      padding: 5rem 4rem;
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clay-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cream);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .contact-heading em {
+      font-style: italic;
+      color: var(--clay-light);
+    }
+
+    .contact-sub {
+      font-size: 0.9rem;
+      color: rgba(250,247,242,0.55);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .contact-btn.primary {
+      background: var(--clay);
+      color: var(--cream);
+    }
+
+    .contact-btn.primary:hover {
+      background: var(--clay-dark);
+    }
+
+    .contact-btn.secondary {
+      border: 1px solid rgba(250,247,242,0.25);
+      color: var(--cream);
+    }
+
+    .contact-btn.secondary:hover {
+      border-color: var(--clay-light);
+      color: var(--clay-light);
+    }
+
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(250,247,242,0.08);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(250,247,242,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > * {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero > *:nth-child(4) { animation-delay: 0.55s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .hero, section { padding: 5rem 1.5rem 3rem; }
+      .stats-bar { padding: 2.5rem 1.5rem; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .project-header { padding: 1.75rem 1.75rem 0; }
+      .project-body { padding: 1.25rem 1.75rem 1.75rem; }
+      .skills-section { padding: 3rem 1.5rem; }
+      .contact-section { padding: 3.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-name">Elizabeth Villa Montes</span>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Project Portfolio</div>
+    <h1>Operations &amp; Project<br /><em>Leadership</em></h1>
+    <p class="hero-sub">
+      15+ years turning complex, multi-site operations into measurable results. From process redesign to cross-functional rollouts, I lead projects end to end and make them stick.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Project Management</span>
+      <span class="tag">Operations</span>
+      <span class="tag">Process Improvement</span>
+      <span class="tag">Change Management</span>
+      <span class="tag">Cross-Functional Leadership</span>
+      <span class="tag">Bilingual: English &amp; Spanish</span>
+      <span class="tag">PMP (In Progress)</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-num">42%</div>
+        <div class="stat-label">Reduction in onboarding time</div>
+      </div>
+      <div>
+        <div class="stat-num">80%+</div>
+        <div class="stat-label">Faster report generation</div>
+      </div>
+      <div>
+        <div class="stat-num">13+</div>
+        <div class="stat-label">Branches supported</div>
+      </div>
+      <div>
+        <div class="stat-num">90%</div>
+        <div class="stat-label">Service center profitability</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED PROJECT -->
+  <section id="projects">
+    <div class="section-header">
+      <span class="section-label">Featured Project</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="featured-project">
+      <div class="project-header">
+        <div class="project-meta">
+          <div class="project-type">Voice of the Customer Initiative</div>
+          <h3>Customer Onboarding Redesign</h3>
+          <div class="project-org">Redi Carpet &nbsp;|&nbsp; Cross-Functional Program</div>
+        </div>
+        <div class="project-number">01</div>
+      </div>
+      <div class="project-body">
+        <p class="project-overview">
+          Led a formal, end-to-end initiative to redesign the customer onboarding experience using Voice of the Customer data. The program spanned four project phases, engaged stakeholders across Sales, Operations, and Customer Support, and delivered measurable improvements in speed, satisfaction, and process adherence.
+        </p>
+
+        <div class="phases">
+          <div class="phase">
+            <div class="phase-label">Initiation</div>
+            <div class="phase-text">Analyzed VoC data from surveys, call transcripts, and support tickets. Identified pain points, developed project charter, and aligned cross-functional stakeholders.</div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Planning</div>
+            <div class="phase-text">Mapped the current onboarding workflow end to end, performed a gap analysis, and designed a future-state process prioritizing simplification and automation.</div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Execution</div>
+            <div class="phase-text">Consolidated multiple intake forms into a single digital experience, standardized onboarding checklists, implemented automated milestone communications, and led training and change management.</div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Monitoring &amp; Close</div>
+            <div class="phase-text">Tracked KPIs including cycle time, CSAT scores, and support ticket volume. Made iterative adjustments, documented final processes, and transitioned ownership to operations.</div>
+          </div>
+        </div>
+
+        <div class="results-grid">
+          <div class="result-card">
+            <div class="result-num">42%</div>
+            <div class="result-desc">Reduction in onboarding cycle time</div>
+          </div>
+          <div class="result-card">
+            <div class="result-num">28%</div>
+            <div class="result-desc">Increase in first-month customer satisfaction</div>
+          </div>
+          <div class="result-card">
+            <div class="result-num">35%</div>
+            <div class="result-desc">Decrease in onboarding-related support tickets</div>
+          </div>
+          <div class="result-card">
+            <div class="result-num">95%</div>
+            <div class="result-desc">Internal process adherence achieved</div>
+          </div>
+        </div>
+
+        <div class="project-skills">
+          <span class="tag">VoC Analysis</span>
+          <span class="tag">Process Mapping</span>
+          <span class="tag">Gap Analysis</span>
+          <span class="tag">Change Management</span>
+          <span class="tag">KPI Tracking</span>
+          <span class="tag">Stakeholder Alignment</span>
+          <span class="tag">Cross-Functional Leadership</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDITIONAL PROJECTS -->
+  <section style="padding-top: 0;">
+    <div class="section-header">
+      <span class="section-label">Additional Projects</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="additional-grid">
+
+      <div class="mini-project">
+        <div class="mini-type">Process Improvement</div>
+        <div class="mini-title">QA &amp; Escalation Reduction Initiative</div>
+        <div class="mini-date">Redi Carpet &nbsp;|&nbsp; Sep 2025 &ndash; Dec 2025</div>
+        <p class="mini-desc">Built and launched a QA audit program across 13+ regional branches, standardizing response workflows and introducing root cause analysis processes to reduce recurring escalations.</p>
+        <div class="mini-result">25% reduction in customer escalations within one year</div>
+      </div>
+
+      <div class="mini-project">
+        <div class="mini-type">Operations</div>
+        <div class="mini-title">Cross-Regional Workflow Optimization</div>
+        <div class="mini-date">Redi Carpet &nbsp;|&nbsp; Sep 2024 &ndash; Dec 2024</div>
+        <p class="mini-desc">Identified and eliminated redundant manual processes across Central and Midwest regions. Documented and enforced uniform workflows to drive consistency and speed across all branches.</p>
+        <div class="mini-result">Order allocation time reduced to under 15 minutes; ~20% productivity gain</div>
+      </div>
+
+      <div class="mini-project">
+        <div class="mini-type">Technology Rollout</div>
+        <div class="mini-title">CRM &amp; Workflow Tool Implementation</div>
+        <div class="mini-date">Redi Carpet &nbsp;|&nbsp; Nov 2022 &ndash; Jan 2023</div>
+        <p class="mini-desc">Led a multi-department CRM and workflow tool rollout for 12 employees. Coordinated training schedules, stakeholder communication, and post-launch support with zero critical service disruptions.</p>
+        <div class="mini-result">10% KPI improvement post-launch; zero critical disruptions</div>
+      </div>
+
+      <div class="mini-project">
+        <div class="mini-type">Onboarding &amp; Vendor Management</div>
+        <div class="mini-title">Subcontractor Onboarding Program</div>
+        <div class="mini-date">Redi Carpet &nbsp;|&nbsp; Jan 2020 &ndash; Mar 2020</div>
+        <p class="mini-desc">Designed a scalable onboarding framework for new subcontractors that reduced ramp-up time and directly supported regional growth by expanding network capacity.</p>
+        <div class="mini-result">30% expansion in subcontractor network capacity</div>
+      </div>
+
+      <div class="mini-project">
+        <div class="mini-type">Analytics &amp; Automation</div>
+        <div class="mini-title">AI-Powered Reporting Solution</div>
+        <div class="mini-date">Redi Carpet &nbsp;|&nbsp; Ongoing</div>
+        <p class="mini-desc">Built operational dashboards using Power BI and Microsoft Copilot to deliver real-time visibility to leadership across 13+ branches, dramatically reducing manual report generation time.</p>
+        <div class="mini-result">80%+ reduction in report generation time across all branches</div>
+      </div>
+
+      <div class="mini-project">
+        <div class="mini-type">Workflow Redesign</div>
+        <div class="mini-title">Invoice Correction Workflow Redesign</div>
+        <div class="mini-date">Redi Carpet &nbsp;|&nbsp; Ongoing</div>
+        <p class="mini-desc">Redesigned the invoice correction process using Smartsheet, replacing a fragmented, email-based workflow with a structured, trackable system that cut resolution time dramatically.</p>
+        <div class="mini-result">Resolution time reduced from ~2 weeks to 2 business days</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <div class="skills-section" id="skills">
+    <div class="skills-inner">
+      <div class="section-header">
+        <span class="section-label">Core Skills &amp; Tools</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Project Management</h4>
+          <ul>
+            <li>End-to-end project lifecycle</li>
+            <li>Stakeholder communication</li>
+            <li>Process mapping &amp; gap analysis</li>
+            <li>Change management</li>
+            <li>KPI development &amp; tracking</li>
+            <li>PMP (In Progress)</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Operations</h4>
+          <ul>
+            <li>Multi-site operations management</li>
+            <li>Workflow optimization</li>
+            <li>Vendor &amp; subcontractor onboarding</li>
+            <li>Team leadership (18 direct reports)</li>
+            <li>Performance management</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Tools &amp; Platforms</h4>
+          <ul>
+            <li>Smartsheet</li>
+            <li>Power BI</li>
+            <li>Microsoft Copilot</li>
+            <li>Salesforce CRM</li>
+            <li>Zendesk</li>
+            <li>Microsoft Office Suite</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Bilingual: English &amp; Spanish</li>
+            <li>Cross-functional collaboration</li>
+            <li>Data-driven decision making</li>
+            <li>Training &amp; team development</li>
+            <li>VoC analysis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="contact-eyebrow">Get in Touch</div>
+      <h2 class="contact-heading">Let's build something <em>together.</em></h2>
+      <p class="contact-sub">Open to Project Manager, Operations Manager, and Implementation/Onboarding Manager roles. Remote and hybrid preferred. Based in Sugar Land, TX.</p>
+      <div class="contact-links">
+        <a href="mailto:Elizabeth.villam7@gmail.com" class="contact-btn primary">Email Me</a>
+        <a href="https://www.linkedin.com/in/elizabeth-villa-montes" target="_blank" class="contact-btn secondary">LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Elizabeth Villa Montes &nbsp;&mdash;&nbsp; Sugar Land, TX
+  </footer>
+
+</body>
+</html>
